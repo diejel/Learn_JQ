@@ -1,43 +1,44 @@
 
-# 1. Learning JQ
+# Learning JQ
 
 - [1. Learning JQ](#1-learning-jq)
-  - [1.1. Starting with JSON Basics](#11-starting-with-json-basics)
-    - [1.1.1. JSON Fundamentals](#111-json-fundamentals)
-      - [1.1.1.1. What JSON is?](#1111-what-json-is)
-      - [1.1.1.2. Basic Syntax](#1112-basic-syntax)
-    - [1.1.2. JSON manipulation with JQ](#112-json-manipulation-with-jq)
-      - [1.1.2.1. Installation and first steps](#1121-installation-and-first-steps)
-      - [1.1.2.2. Basic Filters](#1122-basic-filters)
-    - [1.1.3. Operations and Transformations](#113-operations-and-transformations)
-    - [1.1.4. JQ Advanced Functions](#114-jq-advanced-functions)
-    - [1.1.5. Practical Uses that fits Networking tasks](#115-practical-uses-that-fits-networking-tasks)
-      - [1.1.5.1. Processing Devices Configurations](#1151-processing-devices-configurations)
-    - [1.1.6. Reports Creation](#116-reports-creation)
-    - [1.1.7. Advanced JSON topics and best practices](#117-advanced-json-topics-and-best-practices)
-      - [1.1.7.1. JSON in Automation](#1171-json-in-automation)
-      - [1.1.7.2. Creating MD using JQ](#1172-creating-md-using-jq)
-    - [1.1.8. Iterating on JSON Arrays with JQ](#118-iterating-on-json-arrays-with-jq)
-    - [1.1.9. Accessing to multiple fields](#119-accessing-to-multiple-fields)
-      - [1.1.9.1. Filtering elements before iterating (ex: only `active`)](#1191-filtering-elements-before-iterating-ex-only-active)
-      - [1.1.9.2. Iterating on nested objects (Key-Value pairs)](#1192-iterating-on-nested-objects-key-value-pairs)
-      - [1.1.9.3. Iterating on key and pairs](#1193-iterating-on-key-and-pairs)
-      - [1.1.9.4. Nested Arrays](#1194-nested-arrays)
-      - [1.1.9.5. Iterating on devices and interfaces](#1195-iterating-on-devices-and-interfaces)
+    - [1.0.1. Starting with JSON Basics](#101-starting-with-json-basics)
+      - [1.0.1.1. JSON Fundamentals](#1011-json-fundamentals)
+        - [1.0.1.1.1. What JSON is?](#10111-what-json-is)
+        - [1.0.1.1.2. Basic Syntax](#10112-basic-syntax)
+    - [1.0.2. JSON manipulation with JQ](#102-json-manipulation-with-jq)
+      - [1.0.2.1. Installation and first steps](#1021-installation-and-first-steps)
+      - [1.0.2.2. Basic Filters](#1022-basic-filters)
+    - [1.0.3. Operations and Transformations](#103-operations-and-transformations)
+    - [1.0.4. JQ Advanced Functions](#104-jq-advanced-functions)
+    - [1.0.5. Practical Uses that fits Networking tasks](#105-practical-uses-that-fits-networking-tasks)
+      - [1.0.5.1. Processing Devices Configurations](#1051-processing-devices-configurations)
+      - [1.0.5.2. Reports Creation](#1052-reports-creation)
+    - [1.0.6. Advanced JSON topics and best practices](#106-advanced-json-topics-and-best-practices)
+      - [1.0.6.1. JSON in Automation](#1061-json-in-automation)
+      - [1.0.6.2. Creating MD using JQ](#1062-creating-md-using-jq)
+    - [1.0.7. Iterating on JSON Arrays with JQ](#107-iterating-on-json-arrays-with-jq)
+      - [1.0.7.1. Accessing to multiple fields](#1071-accessing-to-multiple-fields)
+      - [1.0.7.2. Filtering elements before iterating (ex: only `active`)](#1072-filtering-elements-before-iterating-ex-only-active)
+    - [1.0.8. Iterating on nested objects (Key-Value pairs)](#108-iterating-on-nested-objects-key-value-pairs)
+      - [1.0.8.1. Iterating on key and pairs](#1081-iterating-on-key-and-pairs)
+    - [1.0.9. Nested Arrays](#109-nested-arrays)
+      - [1.0.9.1. Iterating on devices and interfaces](#1091-iterating-on-devices-and-interfaces)
+    - [Generate commands or configurations](#generate-commands-or-configurations)
 
 This documents I would like to share for everyone who had difficulties to work with json data. Particularly, the JQ tools cover the most demanding situation you will face at working with JSON.
 
-##  1.1. Starting with JSON Basics
+### 1.0.1. Starting with JSON Basics
 
-### 1.1.1. JSON Fundamentals
+#### 1.0.1.1. JSON Fundamentals
 
-#### 1.1.1.1. What JSON is?
+##### 1.0.1.1.1. What JSON is?
 
 - Is a lightweight format for data exchange.
 - Syntax:  `key: value` pairs.
 - Used in APIs, configurations, automations (relevant for networking and devops)
 
-#### 1.1.1.2. Basic Syntax
+##### 1.0.1.1.2. Basic Syntax
 
  - Structure: Objects `({})` , Arrays `([])`
  - Data Types: Strings, numbers , booleans and null
@@ -58,9 +59,9 @@ This documents I would like to share for everyone who had difficulties to work w
 
 ```
 
-### 1.1.2. JSON manipulation with JQ
+### 1.0.2. JSON manipulation with JQ
 
-#### 1.1.2.1. Installation and first steps
+#### 1.0.2.1. Installation and first steps
 
 - Install `jq` in debian-based machines:
     - `sudo apt install jq`
@@ -68,7 +69,7 @@ This documents I would like to share for everyone who had difficulties to work w
 - If the payload is not pretty printed and is not easy readable, turn it *pretty-print*
     - `jq . file.json`
 
-#### 1.1.2.2. Basic Filters
+#### 1.0.2.2. Basic Filters
 
 - Accessing to values:
 
@@ -89,7 +90,7 @@ jq '.ipv4_addresses."GigabitEthernet0/0"' file.json
 
 ```
 
-###  1.1.3. Operations and Transformations
+###  1.0.3. Operations and Transformations
 
 - Modifying Data
 
@@ -123,7 +124,7 @@ jq '.interfaces | length' file.json # 2
 
 ```
 
-### 1.1.4. JQ Advanced Functions
+### 1.0.4. JQ Advanced Functions
 
 - `map`: Transform array\'s elements
 
@@ -167,9 +168,9 @@ jq '.devices[] | select(.status == "active")' sensors.json
 }
 
 ```
-### 1.1.5. Practical Uses that fits Networking tasks
+### 1.0.5. Practical Uses that fits Networking tasks
 
-####  1.1.5.1. Processing Devices Configurations
+####  1.0.5.1. Processing Devices Configurations
 
 - Example: Extract all interfaces IPs from a json that is generated by Ansible
 
@@ -193,7 +194,7 @@ jq '.ipv4_addresses | map(.) | join(", ")' ip_file.json
 
 >> You can leverage Integration with APIs by using `curl -s <url> | jq '<key>' | <function(<condition>)>`
 
-###  1.1.6. Reports Creation
+####  1.0.5.2. Reports Creation
 
 - Example: Create a CSV file from a json structure. Will be considered network interfaces and their states
 
@@ -241,11 +242,11 @@ jq -r '.interfaces[] | [.name, .status, .ip
 "eth1","up","10.0.0.42"
 ```
 
-###  1.1.7. Advanced JSON topics and best practices
+###  1.0.6. Advanced JSON topics and best practices
 
-#### 1.1.7.1. JSON in Automation
+#### 1.0.6.1. JSON in Automation
 
-#### 1.1.7.2. Creating MD using JQ
+#### 1.0.6.2. Creating MD using JQ
 
 In the next exercise you will learn how to filter data using JQ and create `on-the-fly` how to write an *md* file.
 
@@ -259,7 +260,7 @@ In the next exercise you will learn how to filter data using JQ and create `on-t
   - `'select(.status == "up")'` # Select objects which follow the condition
   - `'"- \(.name) (IP: \(.ip // "none"))"'` # Print the variable value for .name and .ip, if no exist ip value, set default as  "none"
 
-### 1.1.8. Iterating on JSON Arrays with JQ
+### 1.0.7. Iterating on JSON Arrays with JQ
 
 This is the content of file `routers.json`
 
@@ -302,7 +303,7 @@ Processing data of device: R3
 
 ```
 
-### 1.1.9. Accessing to multiple fields
+#### 1.0.7.1. Accessing to multiple fields
 
 For this example will be used the same data of `routers.json` file
 
@@ -320,7 +321,7 @@ Device: R3, IP: 192.168.1.3
 
 ```
 
-#### 1.1.9.1. Filtering elements before iterating (ex: only `active`)
+#### 1.0.7.2. Filtering elements before iterating (ex: only `active`)
 
 For this example will be used the same data of `routers.json` file
 
@@ -335,7 +336,7 @@ Actve Device: R1
 Actve Device: R3
 ```
 
-####  1.1.9.2. Iterating on nested objects (Key-Value pairs)
+###  1.0.8. Iterating on nested objects (Key-Value pairs)
 
 For this example, will be used the data from `network_config.json` file
 
@@ -349,7 +350,7 @@ For this example, will be used the data from `network_config.json` file
   }
 }
 ```
-#### 1.1.9.3. Iterating on key and pairs
+#### 1.0.8.1. Iterating on key and pairs
 
 Use `to_entries` in order to convert the object into an array {key, value}
 
@@ -364,7 +365,7 @@ Switch: switch01, Port: 24, VLAN: 10
 Switch: switch02, Port: 48, VLAN: 20
 ```
 
-#### 1.1.9.4. Nested Arrays
+### 1.0.9. Nested Arrays
 
 For this example will be used the `interfaces.json` file
 
@@ -387,7 +388,7 @@ For this example will be used the `interfaces.json` file
   ]
 }
 ```
-#### 1.1.9.5. Iterating on devices and interfaces
+#### 1.0.9.1. Iterating on devices and interfaces
 
 ```bash
 jq -c '.devices[]' interfaces.json | while read -r device; do
@@ -403,4 +404,29 @@ Device: Router_A
 - GigabitEthernet0/1: 10.0.0.2
 Device: Router_B
 - GigabitEthernet0/0: 10.0.1.1
+```
+
+### 1.0.10. Generate commands or configurations
+
+THis is useful fro creating commands forenabling interfaces based on json data
+
+```json 
+# interfaces_status.json
+[
+  { "interface": "GigabitEthernet0/0", "action": "up" },
+  { "interface": "GigabitEthernet0/1", "action": "down" }
+]
+```
+
+Will be created the cisco command: `interface <iface_name> <shutdown|no_shutdown>`
+
+```bash
+jq -r '.[] | "interface \(.interface)\n \(if .action != "down" then "no shutdown" else "shutdown" end)"' interfaces_status.json
+
+#Result:
+interface GigabitEthernet0/0
+  no shutdown 
+interface GigabitEthernet0/1
+  shutdown
+
 ```
